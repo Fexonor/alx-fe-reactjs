@@ -1,30 +1,32 @@
-import React from 'react';
+import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SearchBar from './components/SearchBar';
 import RecipeList from './components/RecipeList';
+import AddRecipeForm from './components/AddRecipeForm'
+import SearchBar from './components/SearchBar';
 import FavoritesList from './components/FavoritesList';
-import RecommendationsList from './components/RecommendationsList';
-import AddRecipeForm from './components/AddRecipeForm';
-import RecipeDetail from './components/RecipeDetail'; // Import RecipeDetail component
+import RecommendationsList from './components/RecommendationsList'
 
-const App = () => {
-  return (
-    <Router>
+  const App = () => {
+    return (
+      <div>
+        <h1>Recipe Sharing Application</h1>
+        <SearchBar />
+        <RecipeList />
+        <AddRecipeForm />
+        < FavoritesList />
+        < RecommendationsList />
+        <Router>
       <div>
         <h1>Recipe Sharing App</h1>
-        <SearchBar />
-        <AddRecipeForm />
-        <FavoritesList />
-        <RecommendationsList />
         <Routes>
           <Route path="/" element={<RecipeList />} />
-          <Route path="/recipes/:id" element={<RecipeDetail />} /> {/* Add RecipeDetail route */}
+          <Route path="/add" element={<AddRecipeForm />} />
+          <Route path="/recipe/:id" element={<RecipeDetails />} />
         </Routes>
       </div>
     </Router>
-  );
-};
+      </div>
+    );
+  };
 
-export default App;
-
-
+export default App
